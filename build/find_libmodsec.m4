@@ -29,6 +29,14 @@ if test -z "$V3PATH"; then
       break
     fi  
   done
+else
+    if test -f "$V3PATH/lib/libmodsecurity.so"; then
+      V3LIB="$V3PATH/lib/"
+    fi
+    if test -f "$V3PATH/include/modsecurity/modsecurity.h"; then
+      V3INCLUDE="$V3PATH/include/"
+      break
+    fi  
 fi
 if test -n "$V3LIB" -a "$V3LIB" != "no" -a -x "$V3LIB" ; then
     AC_MSG_NOTICE(found libmodsecurity at $V3LIB)
